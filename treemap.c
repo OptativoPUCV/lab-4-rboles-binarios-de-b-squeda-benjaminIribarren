@@ -122,5 +122,20 @@ Pair * firstTreeMap(TreeMap * tree) {
 }
 
 Pair * nextTreeMap(TreeMap * tree) {
-    return NULL;
+        if (tree->current == NULL) return NULL;
+        
+        TreeNode* aux = tree->current;
+        if (aux->right != NULL) {
+            tree->current = minimum(aux->right);
+            return tree->current->pair;
+        }
+        
+        TreeNode* nodoPadre = aux->parent;
+        while (nodoPadre != NULL && aux == nodoPadre->right) {
+            aux = nodoPadre;
+            nodoPadre = nodoPadre->parent;
+        }
+    
+        tree->current = nodoPadre;
+        return tree->current->pair;
 }
