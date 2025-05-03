@@ -107,10 +107,12 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         return;
     }
 
-    cambiaNodo(tree, node, node->left);
-    free(node);
-    return;
-
+    if (node->left != NULL && node->right == NULL) {
+        cambiaNodo(tree, node, node->left);
+        free(node);
+        return;
+    }
+    
     TreeNode* sucesor = minimum(node->right);
     node->pair = sucesor->pair;
     removeNode(tree, sucesor);
