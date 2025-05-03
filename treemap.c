@@ -107,7 +107,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         return;
     }
 
-    replaceNodeInParent(tree, node, node->left);
+    cambiaNodo(tree, node, node->left);
     free(node);
     return;
 
