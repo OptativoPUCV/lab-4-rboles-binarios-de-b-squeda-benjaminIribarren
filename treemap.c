@@ -67,7 +67,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
         nodoPadre->left = new;
     else
         nodoPadre->right = new;
-        
+
     tree->current = new;
 }
 
@@ -114,7 +114,11 @@ Pair * upperBound(TreeMap * tree, void* key) {
 }
 
 Pair * firstTreeMap(TreeMap * tree) {
-    return NULL;
+    if (tree == NULL) return NULL;
+    
+    TreeNode* new = minimum(tree->root);
+    tree->current = new;
+     return new->pair;
 }
 
 Pair * nextTreeMap(TreeMap * tree) {
