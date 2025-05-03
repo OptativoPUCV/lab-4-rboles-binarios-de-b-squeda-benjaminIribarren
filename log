@@ -72,3 +72,17 @@ test.c:6:8: warning: '_strdup' redeclared without dllimport attribute: previous 
     6 | char * _strdup(const char * str) {
       |        ^~~~~~~
 8c705e7
+Sat, May  3, 2025  7:19:10 PM: 
+ treemap.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+Compilation failed
+In file included from test.c:4:
+treemap.c: In function 'removeNode':
+treemap.c:110:5: error: implicit declaration of function 'replaceNodeInParent' [-Wimplicit-function-declaration]
+  110 |     replaceNodeInParent(tree, node, node->left);
+      |     ^~~~~~~~~~~~~~~~~~~
+test.c: At top level:
+test.c:6:8: warning: '_strdup' redeclared without dllimport attribute: previous dllimport ignored [-Wattributes]
+    6 | char * _strdup(const char * str) {
+      |        ^~~~~~~
+928d2ac

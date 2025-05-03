@@ -79,6 +79,19 @@ TreeNode * minimum(TreeNode * x) {
     return x;
 }
 
+void cambiaNodo(TreeMap* tree, TreeNode* node, TreeNode* new) {
+    if (node->parent != NULL) {
+        if (node == node->parent->left)
+            node->parent->left = new;
+        else
+            node->parent->right = new;
+    } else {
+        tree->root = new;
+    }
+    if (new != NULL)
+        new->parent = node->parent;
+}
+
 void removeNode(TreeMap * tree, TreeNode* node) {
     if (node == NULL) return;
 
