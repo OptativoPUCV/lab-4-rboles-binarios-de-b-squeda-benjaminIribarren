@@ -80,8 +80,29 @@ TreeNode * minimum(TreeNode * x) {
 }
 
 void removeNode(TreeMap * tree, TreeNode* node) {
+    if (node == NULL) return;
 
+    if (node->left == NULL && node->right == NULL) {
+        cambiaNodo(tree, node, NULL);
+        free(node);
+        return;
+    }
+
+    if (node->left == NULL && node->right != NULL) {
+        cambiaNodo(tree, node, node->right);
+        free(node);
+        return;
+    }
+
+    replaceNodeInParent(tree, node, node->left);
+    free(node);
+    return;
+
+    TreeNode* sucesor = minimum(node->right);
+    node->pair = sucesor->pair;
+    removeNode(tree, sucesor);
 }
+
 
 void eraseTreeMap(TreeMap * tree, void* key){
     if (tree == NULL || tree->root == NULL) return;
